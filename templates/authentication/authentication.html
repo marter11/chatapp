@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    {% block head %}
+    {% endblock %}
+    <link rel="stylesheet" type="text/css" href="static/authentication/authentication.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  </head>
+  <body>
+
+    <div class="block">
+      {% block h1 %}{% endblock %}
+
+      <div class="border-box">
+        <form action="" method="post">
+          {% block form %}
+          {% endblock %}
+          <span class="lower-decoration"></span>
+        </form>
+      </div>
+    </div>
+
+    <div class="left"></div>
+
+  </body>
+</html>
