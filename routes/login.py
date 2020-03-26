@@ -1,4 +1,4 @@
-from . import app, render_template
+from . import app, render_template, UserModelHandler
 
 @app.route("/login")
 def login_view():
