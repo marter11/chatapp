@@ -1,4 +1,4 @@
-from routes import app
+from routes import app, socketio
 
 if __name__ == "__main__":
-    app.run(debug=True, host="127.0.0.1", port=8000)
+    socketio.run(app, debug=True, host="127.0.0.1", port=8000)
