@@ -2,9 +2,9 @@
 
 ## Stack
 
-Python 3.7
-Flask
-SQLite
+- Python 3.7
+- Flask
+- SQLite
 
 ## Setup
 

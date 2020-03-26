@@ -8,6 +8,7 @@ verify_ssl = true
 [packages]
 flask = "*"
 flask-socketio = "*"
+flask-sqlalchemy = "*"
 
 [requires]
 python_version = "3.7"
