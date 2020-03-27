@@ -13,3 +13,4 @@ SECRET_KEY = app.config["SECRET_KEY"]
 
 # Models
 from .user_model import UserModel, UserModelHandler
+from .room_model import RoomModel
