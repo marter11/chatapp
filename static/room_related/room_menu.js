@@ -42,7 +42,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
   socket.on("update_room_list", (data) => {
     if(data) {
-      console.log("RI")
       var room_location = document.getElementsByClassName("room-container")[0];
       let child = document.createElement("div");
       child.innerHTML = "<h5>"+data.name+"</h5>";
