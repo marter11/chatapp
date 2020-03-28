@@ -1,0 +1,47 @@
+.room-container > div {
+  border: 1px solid black;
+  margin: 1em;
+}
+
+.modal {
+  display: none;
+  position: absolute;
+  background-color: #000;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  opacity: 85%;
+}
+
+.modal-board {
+  background-color: #fff;
+  position: absolute;
+  left: 35%;
+  top: 20%;
+  padding: 0 10%;
+  padding-bottom: 5%;
+}
+
+.modal-fields {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 30% 0;
+}
+
+.modal-fields > * {
+  margin: 0.5em 0;
+}
+
+.capacity {
+  text-align: center;
+}
+
+.capacity::before {
+  content: "Capacity:";
+}
+
+#exit {
+  font-size: 200%;
+}

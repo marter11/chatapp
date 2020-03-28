@@ -2,7 +2,7 @@ from . import app, render_template
 from models.user_model import UserModel, UserModelHandler
 from flask import request
 
-@app.route("/register", methods=['POST'])
+@app.route("/register", methods=['POST', 'GET'])
 def register_view():
     return render_template("/authentication/register.html")
 
