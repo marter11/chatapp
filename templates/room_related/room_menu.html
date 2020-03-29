@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link type="text/css" rel="stylesheet" href="static/room_related/room_menu.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <title>Room list</title>
+  </head>
+  <body>
+    <div class="room-management">
+      <button id="create_room" type="button" name="create_room">Create room</button>
+    </div>
+    <div class="room-container">
+      {% if room_count > 0 %}
+        {% for item in room_object %}
+          <div class="">
+            <h5>{{item.name}}</h5>
+          </div>
+        {% endfor %}
+      {% endif %}
+
+      {% if rooms_count == 0 %}
+        <h1>There's no available rooms!</h1>
+      {% endif %}
+    </div>
+
+    <div class="modal">
+      <div class="modal-board">
+        <i id="exit" class="fas fa-times"></i>
+
+        <div class="modal-fields">
+          <input id="room_name" type="name" name="room_name" placeholder="Name">
+          <input id="room_topic" type="text" name="room_topic" placeholder="Topic">
+          <input id="room_password" type="password" name="room_password" placeholder="Password (optional)">
+
+          <div class="capacity">
+            <select id="room_capacity" name="room_capacity">
+              {% for number in range(2, 11) %}
+                <option value="{{ number }}">{{ number }}</option>
+              {% endfor %}
+            </select>
+
+          </div>
+          <input id="finalize" type="submit" value="Create room">
+        </div>
+
+      </div>
+    </div>
+    <script type="text/javascript" src="static/room_related/room_menu.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+  </body>
+</html>

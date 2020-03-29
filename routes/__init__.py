@@ -10,7 +10,7 @@ DEBUG = True
 
 # Models
 import models
-from models import UserModelHandler
+from models import UserModelHandler, RoomModel
 
 # Views
-from . import login, register, home
+from . import login, register, home, chat_room, room_menu

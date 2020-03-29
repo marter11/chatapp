@@ -14,17 +14,17 @@ def register_view():
                 handler = UserModelHandler(username, email, password)
                 user = handler.set()
                 handler.save(user)
-    
+
                 return redirect('/login')
             else:
                 print("This email is already registered to an existing account.")
-                
+
                 #EXISTING USER WITH THIS EMAIL#
-        
+
         else:
-        
+
             #USERNAME TAKEN#
-        
+
             return redirect('/register')
-    
+
     return render_template('/authentication/register.html')
