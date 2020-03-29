@@ -11,11 +11,15 @@ function SetDisplay() {
 }
 
 function SetValues() {
-  let name = document.getElementById("room_name").value;
-  let topic = document.getElementById("room_topic").value;
-  let password = document.getElementById("room_password").value;
-  let capacity = document.getElementById("room_capacity").value;
-  var data = {name: name, topic: topic, password: password, capacity: capacity};
+  let name = document.getElementById("room_name");
+  let topic = document.getElementById("room_topic");
+  let password = document.getElementById("room_password");
+  let capacity = document.getElementById("room_capacity");
+
+  var data = {name: name.value, topic: topic.value, password: password.value, capacity: capacity.value};
+  name.value = null;
+  topic.value = null;
+  password.value = null;
 
   SocketHandeling(data);
   document.getElementById("exit").click();
