@@ -43,6 +43,13 @@
   content: "Capacity:";
 }
 
+.item {
+  display: grid;
+  grid-template-rows: 100%;
+  grid-template-columns: 25% 25% 25% 25%;
+  padding-left: 10%;
+}
+
 #exit {
   font-size: 200%;
 }

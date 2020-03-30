@@ -14,8 +14,11 @@
     <div class="room-container">
       {% if room_count > 0 %}
         {% for item in room_object %}
-          <div class="">
-            <h5>{{item.name}}</h5>
+          <div class="item">
+            <p>{{item.name}}</p>
+            <p>Learning English</p>
+            <p>Password required</p>
+            <p>0/4</p>
           </div>
         {% endfor %}
       {% endif %}
