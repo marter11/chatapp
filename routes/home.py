@@ -1,4 +1,5 @@
-from . import app, render_template, socketio
+from flask import render_template
+from . import app, socketio
 
 @app.route("/home")
 def home():

@@ -1,4 +1,5 @@
-from . import app, render_template, RoomModel
+from flask import render_template
+from . import app, RoomModel
 
 @app.route("/room/<int:id>")
 def char_room(id):

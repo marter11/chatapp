@@ -1,8 +1,9 @@
-from . import app, render_template
 from models.user_model import UserModel, UserModelHandler
-from flask import request, redirect
+from flask import request, redirect, render_template
+from . import app, AuthenticationMiddleware
 
 @app.route("/register", methods=['POST', 'GET'])
+@AuthenticationMiddleware
 def register_view():
     if request.method == 'POST':
         username = request.form['username']

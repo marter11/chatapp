@@ -1,8 +1,14 @@
-from . import db, SECRET_KEY
+from . import db
 from hashlib import sha256, md5
 from datetime import datetime
+import time
 
 class UserModel(db.Model):
+
+    """
+    Defines the required user data to store in database.
+    """
+
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(40), unique=True, nullable=False)
     email = db.Column(db.String(80), unique=True, nullable=False)
@@ -23,7 +29,7 @@ class UserModelHandler(object):
         self.email = email
 
         self.hash_password(password)
-        self.set_user_key(username)
+        self.user_key = self.generate_user_key(username)
 
     # Convert raw password to more secure, hashed form
     def hash_password(self, password):
@@ -31,10 +37,11 @@ class UserModelHandler(object):
         self.password = hash
 
     # Set unique user_key for security reasons
-    def set_user_key(self, username):
-        raw_unique_key = "".join([username, SECRET_KEY])
+    @staticmethod
+    def generate_user_key(username):
+        raw_unique_key = "".join([username, str(time.time())])
         user_key = md5(raw_unique_key.encode("utf-8")).hexdigest()
-        self.user_key = user_key
+        return user_key
 
     # Finalize the model state
     def set(self):
