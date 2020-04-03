@@ -13,4 +13,4 @@ import models
 from models import UserModelHandler, RoomModel
 
 # Views
-from . import login, register, home, chat_room, room_menu
+from . import login, register, home, chat_room, room_menu, oauth
