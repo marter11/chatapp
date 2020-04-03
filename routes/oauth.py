@@ -61,7 +61,9 @@ def profile():
     hash = sha256(user['node_id'].encode("utf-8")).hexdigest()
 
     user = UserModel.query.filter_by(username=username).first()
-    if(user = None):
+    user_email = UserModel.query.filter_by(email=email).first()
+
+    if(user == None and user_email == None): #CONDITIONS MIGHT HAVE TO BE SEPARATED
         if(email != None):
             handler = UserModelHandler(username, email, hash)
             user = handler.set()
@@ -71,13 +73,12 @@ def profile():
         else:
             #GITHUB ACCOUNT HAS NO PUBLIC EMAIL#
 
-            return redirect('register')
+            return redirect('register') #TEMPORARY REDIRECT TO AVOID ERRORS
     else:
-
+        
         #ELSE BLOCK NOT NECESSARY#
 
         if(user.password == hash):
-
-            return redirect('home')
+            return redirect('home') #TEMPORARY REDIRECT TO AVOID ERRORS
         else:
-            #INSERT SOMETHING'S WRONG, I CAN FEEL IT MEME HERE#
+            return redirect('register') #TEMPORARY REDIRECT TO AVOID ERRORS
