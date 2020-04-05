@@ -1,4 +1,4 @@
-from . import app 
+from . import app
 from requests_oauthlib import OAuth2Session
 from flask import Flask, request, redirect, session, url_for
 from models.user_model import UserModel, UserModelHandler
@@ -75,7 +75,7 @@ def profile():
 
             return redirect('register') #TEMPORARY REDIRECT TO AVOID ERRORS
     else:
-        
+
         #ELSE BLOCK NOT NECESSARY#
 
         if(user.password == hash):

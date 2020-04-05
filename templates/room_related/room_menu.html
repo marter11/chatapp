@@ -16,9 +16,20 @@
         {% for item in room_object %}
           <div class="item">
             <p>{{item.name}}</p>
-            <p>Learning English</p>
-            <p>Password required</p>
-            <p>0/4</p>
+            <p>{{item.topic}}</p>
+            <p>{{item.password}}</p>
+            <p>0/{{item.capacity}}</p>
+            {% if session == item.owner.user_key %}
+              <i class="fas fa-cog" onclick="ToggleRoomOptions(event)">
+                <span class="options-popup">
+                  <span class="change">Change</span>
+                  <span class="delete">Delete</span>
+                </span>
+              </i>
+            {% else %}
+              <i></i>
+            {% endif %}
+            <button type="button" name="join">Join</button>
           </div>
         {% endfor %}
       {% endif %}
@@ -43,14 +54,13 @@
                 <option value="{{ number }}">{{ number }}</option>
               {% endfor %}
             </select>
-
           </div>
           <input id="finalize" type="submit" value="Create room">
         </div>
-
       </div>
     </div>
     <script type="text/javascript" src="static/room_related/room_menu.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/1.7.3/socket.io.min.js"></script>
+    <script type="text/javascript" src="static/room_related/room_menu_additional.js"></script>
   </body>
 </html>

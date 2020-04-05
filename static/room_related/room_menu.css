@@ -46,7 +46,7 @@
 .item {
   display: grid;
   grid-template-rows: 100%;
-  grid-template-columns: 25% 25% 25% 25%;
+  grid-template-columns: 20% 20% 20% 5% 15% 20%;
   padding-left: 10%;
 }
 
@@ -59,6 +59,72 @@
   border: 0;
   border-radius: 5px;
   color: #000;
+}
+
+.item > button {
+  color: #000;
+  background-color: green;
+  border: 0;
+}
+
+.fa-cog {
+  text-align: center;
+  margin: 1em 0;
+  color: grey;
+}
+
+.fa-cog:hover {
+  color: #000;
+}
+
+.options-popup {
+  background-color: #fff;
+  display: none;
+  position: relative;
+  flex-direction: column;
+  z-index: 1;
+  cursor: pointer;
+  visibility: hidden;
+  bottom: 110%;
+  border: 1px solid #000;
+  font-size: 80%;
+}
+
+.options-popup > * {
+  margin: 0.2em 0.3em;
+}
+
+.appear .options-popup {
+  display: flex;
+  visibility: visible;
+  -webkit-animation: fade 1s;
+  animation: fade 1s;
+}
+
+.options-popup .delete {
+  color: rgba(255, 0, 0, 0.8);
+}
+
+.options-popup .delete:hover {
+  color: rgba(255, 0, 0, 1);
+}
+
+/* .options-popup::after {
+  content: "";
+  border-color: #555 transparent transparent;
+  border-style: solid;
+  border-width: 5px;
+  position: absolute;
+} */
+
+@-webkit-keyframes fade {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fade {
+  from {opacity: 0;}
+  to {opacity: 1;}
 }
 
 @media only screen and (max-width: 500px) {

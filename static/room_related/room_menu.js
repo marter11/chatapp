@@ -1,8 +1,16 @@
-
 // Send recorded values inside the modal
 function SocketHandeling(data) {
   var socket = io.connect("http://"+document.domain+":"+location.port);
+  console.log(data);
   socket.emit("create_room", data);
+}
+
+// Get cookies and convert to python readable
+function GetCookies() {
+  let cookie_data = document.cookie.split("=");
+  let cookie_length = cookie_data.length;
+  let session = cookie_data[cookie_length-1];
+  return session;
 }
 
 // Listener functions
@@ -21,7 +29,9 @@ function SetValues() {
   topic.value = null;
   password.value = null;
 
+  data["session"] = GetCookies();
   SocketHandeling(data);
+
   document.getElementById("exit").click();
 }
 
@@ -40,7 +50,6 @@ window.addEventListener('DOMContentLoaded', () => {
   // When finalize room creating
   document.getElementById("finalize").addEventListener("click", SetValues);
 
-
   // Catch update room signal and set among the others
   var socket = io.connect("http://"+document.domain+":"+location.port);
 
@@ -48,7 +57,26 @@ window.addEventListener('DOMContentLoaded', () => {
     if(data) {
       var room_location = document.getElementsByClassName("room-container")[0];
       let child = document.createElement("div");
-      child.innerHTML = "<h5>"+data.name+"</h5>";
+      child.className = "item";
+
+      var room_options = "<i></i>";
+      let session = GetCookies();
+      if(session === data["session"]) {
+        room_options = '<i class="fas fa-cog" onclick="ToggleRoomOptions(event)"><span class="options-popup"><span>Change</span><span>Delete</span></span></i>';
+      }
+
+      // SECURITY ISSUE: XSS vulnerability when pass this <scr\0ipt>alert("XSSed");</scr\0ipt>
+      // This issue is only valid when the user creates a new room and gives arbitrary parameters
+      // The given parameters should be escaped
+      child.innerHTML =
+        `
+          <p>${data.name}</p>
+          <p>${data.topic}</p>
+          <p>${data.password}</p>
+          <p>${data.capacity}</p>
+          ${room_options}
+          <button type="button" name="join">Join</button>
+        `;
       room_location.appendChild(child);
     }
   });
