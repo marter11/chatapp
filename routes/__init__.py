@@ -10,7 +10,7 @@ DEBUG = True
 
 # Models
 import models
-from models import UserModelHandler, RoomModel
+from models import UserModelHandler, RoomModel, UserModel
 
 # Middlewares
 from middlewares.authentication_middleware import AuthenticationMiddleware

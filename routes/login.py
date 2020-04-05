@@ -22,17 +22,12 @@ def login_view():
                 new_user_session_key = UserModelHandler.generate_user_key(username)
                 user.user_key = new_user_session_key
                 UserModelHandler.save(user)
-                
+
                 response =  make_response(redirect('/home'))
                 response.set_cookie("session", user.user_key, max_age=5000)
             else:
-                #WRONG PASSWORD#
-
                 print('Wrong password!')
         else:
-
-            #WRONG USERNAME#
-
-            return redirect('/register')
+            return render_template("/authentication/login.html", nouser=True)
 
     return response

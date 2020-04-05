@@ -12,10 +12,17 @@ def AuthenticationMiddleware(func):
         check_valid_session = UserModel.query.filter_by(user_key=session_cookie).first()
         redirect_to = url_for("login_view")
 
-        if request.path != redirect_to and not check_valid_session:
-            return redirect(redirect_to)
+        if not check_valid_session:
+            if request.path == url_for("register_view"):
+                return func(*args, **kwargs)
 
-        elif request.path == redirect_to and check_valid_session:
+            elif request.path != redirect_to:
+                return redirect(redirect_to)
+
+            else:
+                return func(*args, **kwargs)
+
+        elif (request.path == redirect_to or request.path == url_for("register_view")) and check_valid_session:
             return redirect(url_for("home"))
 
         else:

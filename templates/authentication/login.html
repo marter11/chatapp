@@ -9,7 +9,13 @@
 {% endblock %}
 
 {% block form %}
-<input type="name" name="username" placeholder="Username">
-<input type="password" name="password" placeholder="Password">
+
+{% if nouser %}
+  <p>This user name isn't registered!</p>
+{% endif %}
+
+<input type="name" name="username" placeholder="Username" required>
+<input type="password" name="password" placeholder="Password" required>
 <input id="submit" type="submit" name="submit" value="Login">
+<a href="/register">Make account</a>
 {% endblock %}
